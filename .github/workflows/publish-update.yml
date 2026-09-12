@@ -1,0 +1,44 @@
+name: Publish update
+on:
+  release:
+    types: [published]
+permissions:
+  contents: read
+concurrency:
+  group: publish-update
+  cancel-in-progress: false
+jobs:
+  update:
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          path: release-source
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download published assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: gh release download "$TAG" --repo "$GITHUB_REPOSITORY" --pattern '*.xpi' --pattern SHA256SUMS --dir release-assets
+      - name: Verify and update feed
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: python scripts/publish-update.py "$TAG" release-assets release-source
+      - name: Commit feed
+        run: |
+          if git diff --quiet -- updates.json; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add updates.json
+          git commit -m "release: update published version metadata"
+          git push origin HEAD:main

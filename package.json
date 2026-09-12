@@ -1,0 +1,21 @@
+{
+  "name": "zotero-bilingual-outline",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "Bilingual PDF outlines for Zotero 10 on Windows",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/test.mjs",
+    "check": "tsc --noEmit",
+    "verify": "npm run check && npm test && node scripts/check-repository.mjs && npm run build && npm run verify:package",
+    "verify:package": "python scripts/verify_package.py"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "esbuild": "^0.28.2",
+    "jsdom": "^30.0.1",
+    "typescript": "^7.0.2"
+  }
+}

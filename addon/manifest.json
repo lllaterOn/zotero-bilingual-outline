@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Bilingual Outline",
+  "version": "1.0.0",
+  "description": "为 Zotero PDF 目录添加中文对照，支持手动翻译、修订与笔记同步。",
+  "author": "lllaterOn",
+  "icons": {
+    "48": "icon.svg",
+    "96": "icon.svg"
+  },
+  "applications": {
+    "zotero": {
+      "id": "bilingual-outline@lllateron",
+      "strict_min_version": "10.0.1",
+      "strict_max_version": "10.0.*",
+      "update_url": "https://raw.githubusercontent.com/lllaterOn/zotero-bilingual-outline/main/updates.json"
+    },
+    "gecko": {
+      "id": "bilingual-outline@lllateron"
+    }
+  }
+}

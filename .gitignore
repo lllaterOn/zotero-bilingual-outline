@@ -1,0 +1,11 @@
+node_modules/
+.cache/
+.build/
+dist/
+addon/runtime.js
+inputs/
+*.log
+.env
+.env.*
+!.env.example
+*.local.json

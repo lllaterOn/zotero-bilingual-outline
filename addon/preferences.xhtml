@@ -1,0 +1,43 @@
+<vbox id="bo-pane" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml">
+<html:div id="bo-preferences" style="max-width:760px;line-height:1.5;padding:0 12px 12px">
+<html:style>
+#bo-preferences section { margin: 0 0 22px; }
+#bo-preferences h3 { margin: 12px 0 8px; }
+#bo-preferences p { margin: 6px 0 10px; }
+#bo-preferences .bo-row { display:flex;gap:8px;align-items:center;flex-wrap:wrap; }
+#bo-preferences .bo-check { display:block;margin:8px 0; }
+#bo-preferences .bo-note { font-size:.92em;opacity:.8; }
+#bo-preferences [hidden] { display:none !important; }
+#bo-preferences [role="status"]:empty { display:none; }
+</html:style>
+<html:section>
+<html:h3>翻译服务</html:h3>
+<html:p>DeepSeek 官方 API · deepseek-flash</html:p>
+<html:div class="bo-row"><html:span id="bo-key-state"/><html:button id="bo-change-key">更换密钥</html:button><html:button id="bo-clear-key">清除密钥</html:button></html:div>
+<html:div id="bo-key-editor">
+<html:p><html:label>API Key <html:input id="bo-key" type="password" autocomplete="off" placeholder="输入 DeepSeek API Key" style="width:75%"/></html:label></html:p>
+<html:div class="bo-row"><html:button id="bo-save-key">保存密钥</html:button><html:button id="bo-cancel-key">取消</html:button></html:div>
+</html:div>
+<html:p class="bo-note">“已配置”表示密钥已保存，尚不代表验证可用。仅发送论文标题和目录，不发送正文。</html:p>
+<html:p id="bo-key-feedback" role="status"/>
+</html:section>
+
+<html:section>
+<html:h3>多机同步</html:h3>
+<html:label class="bo-check"><html:input id="bo-settings-sync" type="checkbox"/>同步显示设置</html:label>
+<html:label class="bo-check"><html:input id="bo-translations-sync" type="checkbox"/>同步译文与修订</html:label>
+<html:p id="bo-connection"/>
+<html:div class="bo-row"><html:button id="bo-connect">连接同步笔记</html:button><html:button id="bo-sync">检查同步</html:button><html:button id="bo-resolve-settings" hidden="hidden">处理设置冲突</html:button></html:div>
+<html:p class="bo-note">先完成 Zotero 同步，每台电脑连接一次。笔记已连接不代表云端已同步；云端传输由 Zotero 完成。</html:p>
+<html:p id="bo-status" class="bo-note" style="overflow-wrap:anywhere"/>
+<html:p id="bo-sync-feedback" role="status"/>
+</html:section>
+<html:section>
+<html:h3>数据维护</html:h3>
+<html:p class="bo-note">仅清理 PDF 已永久删除的译文。执行前预览并备份；回收站条目和未下载文件会保留。</html:p>
+<html:div class="bo-row"><html:button id="bo-cleanup">清理失效译文</html:button><html:button id="bo-restore">恢复最近清理</html:button></html:div>
+<html:p id="bo-maintenance-feedback" role="status"/>
+</html:section>
+<html:details><html:summary>使用说明</html:summary><html:p>打开有目录的 PDF，在左侧点击翻译图标。已有译文自动显示；右键中文标题可修订。重新翻译成功会覆盖整份旧译文。</html:p><html:p>复选框修改后立即保存。密钥和同步开关仅保存在本机。同步数据保存在 Personal zotero addons 下本插件的专属笔记中，请勿直接编辑。</html:p></html:details>
+</html:div>
+</vbox>
