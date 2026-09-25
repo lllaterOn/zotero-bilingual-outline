@@ -30,7 +30,7 @@ with zipfile.ZipFile(target) as archive:
     manifest = json.loads(archive.read("manifest.json"))
     assert manifest == manifest_source, "Manifest differs from source"
     assert manifest["manifest_version"] == 2
-    assert manifest["version"] == json.loads((ROOT / "package.json").read_text(encoding="utf-8"))["version"] and manifest["name"] == "Bilingual Outline"
+    assert manifest["version"] == json.loads((ROOT / "package.json").read_text(encoding="utf-8"))["version"] and manifest["name"] == "Zotero Bilingual Outline"
     app = manifest["applications"]["zotero"]
     assert app["id"] == "bilingual-outline@lllateron"
     assert app["strict_min_version"] == "10.0.1" and app["strict_max_version"] == "10.0.*"

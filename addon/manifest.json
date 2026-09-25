@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Bilingual Outline",
-  "version": "1.0.0",
-  "description": "为 Zotero PDF 目录添加中文对照，支持手动翻译、修订与笔记同步。",
+  "name": "Zotero Bilingual Outline",
+  "version": "1.0.1",
+  "description": "为 PDF 目录添加中文对照，支持手动翻译、修订与笔记同步。",
   "author": "lllaterOn",
   "icons": {
     "48": "icon.svg",
